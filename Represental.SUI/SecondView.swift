@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SecondView: View {
+    @State var isLoading: Bool = true
     var body: some View {
         ZStack(alignment: .top) {
             HStack {
@@ -15,7 +16,7 @@ struct SecondView: View {
             }
             .frame(width: 10)
             .background(Color.black)
-            WebViewKit()
+            WebViewKit(isLoading: $isLoading)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
