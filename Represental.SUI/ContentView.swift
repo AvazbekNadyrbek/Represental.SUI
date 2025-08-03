@@ -21,6 +21,7 @@ struct ContentView: View {
                 print("1")
             })
                 .frame(width: 200, height: 50)
+            KitTableUIKit()
         }
         .padding()
     }
