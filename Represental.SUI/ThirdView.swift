@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct ThirdView: View {
+    @State var isShow = false
+    @State var selectedImage: UIImage = UIImage(systemName: "plus")!
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Image(uiImage: selectedImage)
+                .resizable()
+                .frame(width: 100, height: 100)
+            Button {
+                isShow.toggle()
+            } label: {
+                Text("Select Image")
+            }
+            .sheet(isPresented: $isShow) {
+                ImagePicker(image: $selectedImage)
+            }
+
+        }
     }
 }
 
