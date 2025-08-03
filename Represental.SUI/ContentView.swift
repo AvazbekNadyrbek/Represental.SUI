@@ -12,18 +12,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            KitView(text:"Simple UI buttom",completion: {
-                print("1")
-            })
+        ScrollView {
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
+                KitView(text:"Simple UI buttom",completion: {
+                    print("1")
+                })
                 .frame(width: 200, height: 50)
-            KitTableUIKit()
+                KitTableUIKit()
+                    .frame(height: 400)
+                TextUIKit()
+                    .frame(height: 40)
+                    .padding()
+            }
+            .padding()
         }
-        .padding()
     }
 }
 

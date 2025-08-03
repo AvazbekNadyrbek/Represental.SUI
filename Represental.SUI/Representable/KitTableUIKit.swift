@@ -14,6 +14,7 @@ struct KitTableUIKit: UIViewRepresentable {
             // все что вернет эта функция ТО и будет у нас в SwiftUI эмелентом
             $0.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
             $0.dataSource = context.coordinator
+            $0.delegate = context.coordinator
             return $0
         }(UITableView(frame: .zero, style: .insetGrouped))
     }
@@ -26,7 +27,7 @@ struct KitTableUIKit: UIViewRepresentable {
         Coordinator()
     }
     
-    final class Coordinator: NSObject, UITableViewDataSource {
+    final class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             10
@@ -36,6 +37,10 @@ struct KitTableUIKit: UIViewRepresentable {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = "cell \(indexPath.row)"
             return cell
+        }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            print(indexPath.row)
         }
         
         
