@@ -11,6 +11,9 @@ import SwiftUI
 // Ignoresafearea
 
 struct ContentView: View {
+    
+    @Binding var path: [Pages]
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -27,12 +30,19 @@ struct ContentView: View {
                 TextUIKit()
                     .frame(height: 40)
                     .padding()
+                
+                Button {
+                    path.append(.HomeWork)
+                } label: {
+                    Text("Go to HomeWork")
+                }
+
             }
             .padding()
         }
     }
 }
-
-#Preview {
-    ContentView()
-}
+//
+//#Preview {
+//    ContentView()
+//}

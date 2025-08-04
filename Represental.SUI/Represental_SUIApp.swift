@@ -7,11 +7,29 @@
 
 import SwiftUI
 
+enum Pages: Hashable {
+    case Home
+    case HomeWork
+}
 @main
 struct Represental_SUIApp: App {
+    
+    @State var path: [Pages] = []
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack(path: $path) {
+                ContentView(path: $path)
+                    .navigationDestination(for: Pages.self) { page in
+                        switch page {
+                        case .Home:
+                            SecondView()
+                        case .HomeWork:
+                            HomeWorkView()
+                        }
+                    }
+            }
+            
         }
     }
 }
